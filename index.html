@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ReviewMind - AI Product Insights</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="app-container">
+        <header>
+            <div class="logo">
+                <i class="fa-solid fa-brain"></i>
+                <span>ReviewMind</span>
+            </div>
+            <button id="settings-btn" class="icon-btn" title="Settings">
+                <i class="fa-solid fa-gear"></i>
+            </button>
+        </header>
+
+        <main>
+            <section class="hero">
+                <h1>Turn Reviews into <span class="highlight">Actionable Insights</span></h1>
+                <p>Paste product reviews below and let our AI agent analyze sentiment, extract themes, and suggest improvements.</p>
+            </section>
+
+            <section class="input-section">
+                <div class="input-wrapper">
+                    <textarea id="review-input" placeholder="Paste one or more product reviews here...&#10;Example: 'Great battery life but the screen scratches easily.'"></textarea>
+                    <div class="actions">
+                        <button id="analyze-btn" class="primary-btn">
+                            <i class="fa-solid fa-wand-magic-sparkles"></i> Analyze Reviews
+                        </button>
+                        <button id="clear-btn" class="secondary-btn">Clear</button>
+                    </div>
+                </div>
+            </section>
+
+            <section id="results-section" class="results-section hidden">
+                <div class="metrics-grid">
+                    <div class="metric-card">
+                        <div class="metric-icon sentiment-icon">
+                            <i class="fa-solid fa-face-smile"></i>
+                        </div>
+                        <div class="metric-info">
+                            <h3>Sentiment Score</h3>
+                            <p id="sentiment-score">--</p>
+                        </div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-icon count-icon">
+                            <i class="fa-solid fa-comments"></i>
+                        </div>
+                        <div class="metric-info">
+                            <h3>Reviews Analyzed</h3>
+                            <p id="review-count">--</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="insights-grid">
+                    <div class="insight-card">
+                        <h3><i class="fa-solid fa-thumbs-up"></i> Key Strengths</h3>
+                        <ul id="strengths-list"></ul>
+                    </div>
+                    <div class="insight-card">
+                        <h3><i class="fa-solid fa-thumbs-down"></i> Weaknesses</h3>
+                        <ul id="weaknesses-list"></ul>
+                    </div>
+                    <div class="insight-card full-width">
+                        <h3><i class="fa-solid fa-lightbulb"></i> Strategic Recommendations</h3>
+                        <p id="recommendation-text"></p>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Settings Modal -->
+        <div id="settings-modal" class="modal hidden">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2>Settings</h2>
+                    <button id="close-modal" class="close-btn">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <label for="api-key">Gemini API Key</label>
+                    <input type="password" id="api-key" placeholder="Enter your Gemini API Key">
+                    <p class="hint">Your key is stored locally in your browser. We do not save it.</p>
+                </div>
+                <div class="modal-footer">
+                    <button id="save-settings" class="primary-btn">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
