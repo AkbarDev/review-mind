@@ -16,12 +16,24 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Settings Modal Logic
-    settingsBtn.addEventListener('click', () => {
+    function openModal() {
         settingsModal.classList.remove('hidden');
-    });
+        settingsModal.style.display = 'flex';
+    }
 
-    closeModal.addEventListener('click', () => {
+    function closeModalFunc() {
         settingsModal.classList.add('hidden');
+        settingsModal.style.display = 'none';
+    }
+
+    settingsBtn.addEventListener('click', openModal);
+    closeModal.addEventListener('click', closeModalFunc);
+
+    // Close when clicking outside the modal content
+    window.addEventListener('click', (e) => {
+        if (e.target === settingsModal) {
+            closeModalFunc();
+        }
     });
 
     saveSettingsBtn.addEventListener('click', () => {
@@ -29,7 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (key) {
             localStorage.setItem('gemini_api_key', key);
             alert('API Key saved securely in your browser!');
-            settingsModal.classList.add('hidden');
+            closeModalFunc();
         } else {
             alert('Please enter a valid API Key.');
         }
