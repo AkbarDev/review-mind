@@ -164,9 +164,7 @@ button {
 }
 
 /* Results Section */
-.hidden {
-    display: none;
-}
+/* .hidden moved to utility section at the bottom to ensure precedence */
 
 .metrics-grid {
     display: grid;
@@ -332,7 +330,7 @@ button {
     .hero h1 {
         font-size: 2rem;
     }
-    
+
     .app-container {
         padding: 1rem;
     }
