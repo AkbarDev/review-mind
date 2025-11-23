@@ -335,3 +335,8 @@ button {
         padding: 1rem;
     }
 }
+
+/* Utility */
+.hidden {
+    display: none !important;
+}
