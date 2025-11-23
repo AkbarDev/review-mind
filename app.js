@@ -77,7 +77,7 @@ document.addEventListener('DOMContentLoaded', () => {
             displayResults(analysis);
         } catch (error) {
             console.error('Analysis failed:', error);
-            alert('Analysis failed. Please check your API key and try again.');
+            alert(`Analysis failed: ${error.message}`);
         } finally {
             analyzeBtn.innerHTML = '<i class="fa-solid fa-wand-magic-sparkles"></i> Analyze Reviews';
             analyzeBtn.disabled = false;
@@ -115,7 +115,10 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         if (!response.ok) {
-            throw new Error('API request failed');
+            const errorData = await response.json().catch(() => ({}));
+            console.error('Gemini API Error:', errorData);
+            const errorMessage = errorData.error?.message || `API Error: ${response.status} ${response.statusText}`;
+            throw new Error(errorMessage);
         }
 
         const data = await response.json();
